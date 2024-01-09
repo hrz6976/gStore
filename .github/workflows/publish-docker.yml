@@ -43,8 +43,7 @@ jobs:
 
       - name: Creating source tarball
         run:  |
-          tar -cfzv gstore-src.tar.gz \
-          "src" "api" "defaults" "tests" "3rdparty" "data" "scripts" "conanfile.py" "CMakeLists.txt" "README.md" "LICENSE"
+          tar -czvf gstore-src.tar.gz "src" "api" "defaults" "tests" "3rdparty" "data" "scripts" "conanfile.py" "CMakeLists.txt" "README.md" "LICENSE"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
