@@ -2,7 +2,7 @@
 # @authors: Runzhi He <rzhe@pku.edu.cn>
 # @date: 2024-01-08
 
-name: Tests and Coverage
+name: Build and Test
 
 on:
     push:
