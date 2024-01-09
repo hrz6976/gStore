@@ -1,6 +1,6 @@
 <!-- insert a mobile friendly image -->
 <div align="center">
-  <img src="docs/logo.png" style="max-height: 200px; alt="gStore logo"/>
+  <img src="docs/logo.png" style="max-height: 200px;" alt="gStore logo"/>
 </div>
 
 <div align="center" style="margin-bottom: 2em; font-size: 1.2em; font-weight: bold;">
