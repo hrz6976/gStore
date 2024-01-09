@@ -44,6 +44,7 @@ jobs:
       - name: Build
         run: |
           cmake .. -G Ninja -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Debug -DCOVERAGE=ON
+          ninja prepare
           ninja install -v
         working-directory: cmake-build-debug
 
