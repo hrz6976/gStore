@@ -1,0 +1,41 @@
+# This workflow uploads documentation to Cloudflare Pages.
+# @authors: Runzhi He <rzhe@pku.edu.cn>
+# @date: 2024-01-10
+
+name: Build and Test
+
+on:
+    push:
+      branches: [ online-docs ]  # TODO: have a stable default branch
+    pull_request:
+    workflow_dispatch: # Manually run workflow
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Publish to Cloudflare Pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Move Directory
+        run: |
+          mkdir -p temp
+          cp -r $(find ./docs -maxdepth 1 -type f) temp
+          cp -r ./docs/index.html temp
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: ${{ secrets.CF_PROJECT_NAME }}
+          directory: temp
+          # Optional: Enable this if you want to have GitHub Deployments triggered
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: Switch what branch you are publishing to.
+          # By default this will be the branch which triggered this workflow
+          branch: online-docs
