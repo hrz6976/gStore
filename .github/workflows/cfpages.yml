@@ -2,12 +2,11 @@
 # @authors: Runzhi He <rzhe@pku.edu.cn>
 # @date: 2024-01-10
 
-name: Build and Test
+name: Publish Cloudflare Pages
 
 on:
     push:
-      branches: [ online-docs ]  # TODO: have a stable default branch
-    pull_request:
+      branches: [ online-docs ]
     workflow_dispatch: # Manually run workflow
 
 jobs:
@@ -36,6 +35,3 @@ jobs:
           directory: temp
           # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          # Optional: Switch what branch you are publishing to.
-          # By default this will be the branch which triggered this workflow
-          branch: online-docs
